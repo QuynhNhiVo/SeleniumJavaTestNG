@@ -1,0 +1,55 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<test name="First Test">
+    <classes>
+        <class name="testng.SeleniumTestNG._1Annotations.DemoAnnotation">
+            <methods>
+                <include name="testOneMethod"/>
+            </methods>
+        </class>
+    </classes>
+</test>
+<test name="Second Test">
+<classes>
+    <class name="testng.SeleniumTestNG._1Annotations.DemoAnnotation">
+        <methods>
+            <include name="testFourMethod"/>
+        </methods>
+    </class>
+</classes>
+</test>
+        </suite>
+
+        <!--        <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >-->
+
+        <!--<suite name="Suite" verbose="1">-->
+        <!--<groups>-->
+        <!--    <run>-->
+        <!--        <include name="testOne"/>-->
+        <!--    </run>-->
+        <!--</groups>-->
+        <!--<test name="First Test">-->
+        <!--    <classes>-->
+        <!--        <class name="testng.SeleniumTestNG._1Annotations.DemoAnnotation">-->
+        <!--            <methods>-->
+        <!--            </methods>-->
+        <!--        </class>-->
+        <!--    </classes>-->
+        <!--</test>-->
+        <!--</suite>-->
+
+
+        <!--        <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >-->
+
+        <!--<suite name="Suite" verbose="1">-->
+        <!--<groups>-->
+        <!--    <run>-->
+        <!--        <include name="testOne"/>-->
+        <!--    </run>-->
+        <!--</groups>-->
+        <!--<test name="Second Test">-->
+        <!--<packages>-->
+        <!--    <package name="org.testng.SeleniumTestNG._1Annotations"></package>-->
+        <!--</packages>-->
+        <!--</test>-->
+        <!--</suite>-->

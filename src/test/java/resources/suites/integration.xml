@@ -1,0 +1,33 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" > 
+<suite name="First Suite" verbose="1">
+    <test name="test">
+        <classes>
+            <class name="org.testng.SeleniumTestNG._1Annotations.LoginTest">
+                <methods>
+                    <include name="testLoginSuccess"/>
+                </methods>
+            </class>
+
+            <class name="org.testng.SeleniumTestNG._1Annotations.TestCustomer">
+                <methods>
+                    <include name="testAddCustomer"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="test2">
+        <classes>
+            <class name="org.testng.SeleniumTestNG._1Annotations.LoginTest">
+                <methods>
+                    <include name="testLoginSuccess"/>
+                </methods>
+            </class>
+
+            <class name="org.testng.SeleniumTestNG._1Annotations.CheckCustomernProject">
+                <methods>
+                    <include name="testAddCustomer"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
