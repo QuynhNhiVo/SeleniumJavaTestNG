@@ -23,5 +23,11 @@
 hs_err_pid*
 replay_pid*
 .idea
-*.iml/
-target
+*.iml
+target/
+test-output/
+Screenshots/
+*.png
+*.jpg
+*.jpeg
+*.gif
