@@ -119,7 +119,28 @@ public class AddNewCustomer extends BaseTest {
         Assert.assertTrue(driver.findElement(By.xpath(LocatorCRM.headerContact)).isDisplayed(), "Can't get to Contact Page");
         driver.findElement(By.xpath(LocatorCRM.addNewContact)).click();
         sleep(2);
-        Assert.assertTrue(driver.findElement(By.xpath(LocatorCRM.headerAddNewContactDialog)).isDisplayed(), "Not find Dialog Add New Contact");
+        Assert.assertTrue(driver.findElement(By.xpath(LocatorCRM.headerAddNewContactDialog)).isEnabled(), "Not find Dialog Add New Contact");
         driver.findElement(By.xpath(LocatorCRM.profileContact)).sendKeys(System.getProperty("user.dir") + "\\src\\test\\java\\resources\\datatest\\img.png");
+
+        driver.findElement(By.xpath(LocatorCRM.firstNameContact)).sendKeys("1 Contact");
+        driver.findElement(By.xpath(LocatorCRM.lastNameContact)).sendKeys("Name");
+        driver.findElement(By.xpath(LocatorCRM.positionContact)).sendKeys("HCM");
+        driver.findElement(By.xpath(LocatorCRM.emailContact)).sendKeys("admin@example.com");
+        driver.findElement(By.xpath(LocatorCRM.phoneContact)).sendKeys("1111111");
+
+        Select selectDirection = new Select(driver.findElement(By.xpath(LocatorCRM.directionContact)));
+        selectDirection.selectByValue("rtl");
+
+        driver.findElement(By.xpath(LocatorCRM.passwordContact)).sendKeys("123456");
+        sleep(1);
+        Assert.assertTrue(driver.findElement(By.xpath(LocatorCRM.btnShowPasswordContact)).isEnabled(), "Button show password disable");
+        driver.findElement(By.xpath(LocatorCRM.btnShowPasswordContact)).click();
+        driver.findElement(By.xpath(LocatorCRM.checkboxNotSendContact)).click();
+        driver.findElement(By.xpath(LocatorCRM.btnSaveContact)).click();
+        sleep(1);
+
+        Assert.assertEquals("1 Contact", driver.findElement(By.xpath(LocatorCRM.firstItemCustomerOnTable)).getText());
+
+        sleep(3);
     }
 }

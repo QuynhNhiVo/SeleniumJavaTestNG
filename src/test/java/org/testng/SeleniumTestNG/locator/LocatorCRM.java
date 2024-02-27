@@ -52,13 +52,13 @@ public class LocatorCRM {
     public static String headerAddNewContactDialog = "//h4[normalize-space()='Add new contact']";
     public static String headerNameDialog = "//h4[normalize-space()='Add new contact']/following-sibling::p";
     public static String firstNameContact = "//input[@id='firstname']";
-    public static String LastNameContact = "//input[@id='lastname']";
+    public static String lastNameContact = "//input[@id='lastname']";
     public static String positionContact = "//input[@id='title']";
-    public static String emailContact = "//input[@id='title']";
+    public static String emailContact = "//input[@id='email']";
     public static String phoneContact = "//input[@id='phonenumber']";
     public static String directionContact = "//select[@id='direction']";
     public static String passwordContact = "//input[@name='password']";
-    public static String btnShowPasswordContact = "//input[@name='password']";
+    public static String btnShowPasswordContact = "//input[@name='password']/following-sibling::span[1]//a";
     public static String btnGeneratePasswordContact = "//input[@name='password']";
     public static String btnSaveContact = "//form[@id='contact-form']//button[normalize-space()='Save']";
     public static String checkboxNotSendContact = "//input[@id='donotsendwelcomeemail']";
