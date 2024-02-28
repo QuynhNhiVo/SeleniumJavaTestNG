@@ -1,12 +1,17 @@
 package org.testng.SeleniumTestNG.locator;
 
 public class LocatorCRM {
+
+    public static String emailLogin = "admin@example.com";
+    public static String passwordLogin = "123456";
+
     public static String headerLogin = "//h1[normalize-space()='Login']";
     public static String email = "//input[@id='email']";
     public static String password = "//input[@id='password']";
     public static String btnRemember = "//label[@for='remember']";
     public static String btnLogin = "//button[@type='submit']";
     public static String forgotLogin = "//a[normalize-space()='Forgot Password?']";
+    public static String messageAlert= "//div[@id='alerts']";
 
     //Menu dashboard
     public static String menuCustomer = "//span[normalize-space()='Customers']";
