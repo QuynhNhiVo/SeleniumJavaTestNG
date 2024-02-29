@@ -1,12 +1,10 @@
 package org.testng.SeleniumTestNG.thuchanh;
 
-import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.SeleniumTestNG.common.BaseTest;
-import org.testng.SeleniumTestNG.keywords.ActionKeywords;
 import org.testng.SeleniumTestNG.locator.LocatorCRM;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -36,8 +34,8 @@ public class AddNewCustomer extends BaseTest {
         driver.findElement(By.xpath(LocatorCRM.password)).sendKeys("123456");
         driver.findElement(By.xpath(LocatorCRM.btnLogin)).submit();
         sleep(1);
-//        new ActionKeywords(driver);(c1 ham xay dung)
-//        ActionKeywords act= new ActionKeywords(driver);(C2 constructor)
+//        new WebUI(driver);(c1 ham xay dung)
+//        WebUI act= new WebUI(driver);(C2 constructor)
 //        act.setTect(LocatorCRM.email, "admin@example.com");
 //        act.setTect(LocatorCRM.password, "123456");
 //        driver.findElement(By.xpath(LocatorCRM.btnLogin)).submit();
