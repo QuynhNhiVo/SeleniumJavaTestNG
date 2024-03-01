@@ -4,6 +4,7 @@ import org.testng.SeleniumTestNG._11ThucHanhPOM.pages.DashboardPage;
 import org.testng.SeleniumTestNG._11ThucHanhPOM.pages.LoginPage;
 import org.testng.SeleniumTestNG.common.BaseTest;
 import org.testng.SeleniumTestNG.keywords.keywords.WebUI;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
@@ -12,9 +13,10 @@ public class LoginTest extends BaseTest {
     DashboardPage dashboardPage;
 
     @Test
-    public void loginSuccess(){
+    @Parameters({"email", "password"})
+    public void loginSuccess(String email, String password){
         loginPage = new LoginPage(driver);
-        dashboardPage = loginPage.loginCRM("admin@example.com", "123456");
+        dashboardPage = loginPage.loginCRM(email, password);
         waitForPageLoaded();
         loginPage.verifyLoginSuccess();
         WebUI.captureScreenImage("testLogin");

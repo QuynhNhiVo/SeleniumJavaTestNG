@@ -13,6 +13,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -25,21 +27,27 @@ import java.util.List;
 public class BaseTest {
     public static WebDriver driver;
 
-    @BeforeMethod
+
     public void createBrowser(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
     }
-    public void createBrowser(String browserName){
+
+    @BeforeMethod
+    @Parameters({"browser"})
+    public void createBrowser(@Optional("chrome") String browserName){
         if (browserName.equals("chrome")){
             driver = new ChromeDriver();
         }if (browserName.equals("firefox")){
             driver = new FirefoxDriver();
-        }else {
+        }if (browserName.equals("edge")) {
             driver = new EdgeDriver();
         }
+        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
     }
 
     @AfterMethod
