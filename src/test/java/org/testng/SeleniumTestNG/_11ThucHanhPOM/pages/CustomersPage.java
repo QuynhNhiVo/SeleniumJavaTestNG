@@ -16,6 +16,7 @@ public class CustomersPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
+    private By menuCustomer = By.xpath("//span[normalize-space()='Customers']");
     private By menuAddNewCustomer = By.xpath("//a[normalize-space()='New Customer']");
     private By inputSearchCustomer = By.xpath("//div[@class='input-group']/input[@type='search']");
     private By headerCustomerPage = By.xpath("//span[normalize-space()='Customers Summary']");
@@ -47,18 +48,18 @@ public class CustomersPage {
 
     public CustomersPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         new WebUI(driver);
     }
 
     public void verifyHeaderCustomerPage() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(headerCustomerPage));
-        Assert.assertTrue(driver.findElement(headerCustomerPage).isDisplayed(), "Header Customer Page NOT Display.");
-        Assert.assertEquals(driver.findElement(headerCustomerPage).getText(), headerText, "Context of header customer page not match.");
+        WebUI.waitForElementVisible(headerCustomerPage);
+        Assert.assertTrue(WebUI.checkElementDisplay(headerCustomerPage), "Header Customer Page NOT Display.");
+        Assert.assertEquals(WebUI.getElementText(headerCustomerPage), headerText, "Context of header customer page not match.");
     }
 
     public void clickButtonAddNew() {
-        driver.findElement(menuAddNewCustomer).click();
+        WebUI.clickElement(menuAddNewCustomer);
     }
 
 
@@ -69,7 +70,7 @@ public class CustomersPage {
         WebUI.setText(inputWebsite,"https://anhtester.com");
         WebUI.clickElement(dropDownGroup);
         WebUI.setText(inputGroup,"VIP");
-        driver.findElement(inputGroup).sendKeys(Keys.ENTER);
+        WebUI.setKey(inputCompany, Keys.ENTER);
         WebUI.sleep(1);
         WebUI.setText(inputAddress,"Ho Chi Minh");
         WebUI.setText(inputCity,"Ho Chi Minh");
@@ -77,26 +78,25 @@ public class CustomersPage {
         WebUI.setText(inputZipCode,"20000");
         WebUI.clickElement(dropDownCountry);
         WebUI.setText(inputCountry,"Vietnam");
-        driver.findElement(inputCountry).sendKeys(Keys.ENTER);
+        WebUI.setKey(inputCountry, Keys.ENTER);
         WebUI.sleep(1);
         WebUI.clickElement(btnSaveCustomer);
     }
 
     public void searchAndVerifyCustomer(String customer_Name) {
-        driver.findElement(By.xpath(LocatorCRM.menuCustomer)).click();
+        WebUI.clickElement(menuCustomer);
         WebUI.setText(inputSearchCustomer,customer_Name);
         WebUI.sleep(1);
         Assert.assertTrue(WebUI.checkElementExist(firstItemCustomerOnTable), "Customer not exist");
-        WebUI.sleep(1);
     }
 
     public void verifyCustomerDetail(String customer_Name){
         SoftAssert softAssert = new SoftAssert();
         WebUI.clickElement(firstItemCustomerOnTable);
-        softAssert.assertEquals(driver.findElement(inputCompany).getAttribute("value"), customer_Name, "Company Name incorrect");
-        softAssert.assertEquals(driver.findElement(inputVat).getAttribute("value"), "123456", "VAT incorrect");
-        softAssert.assertEquals(driver.findElement(inputPhone).getAttribute("value"), "99999999", "Phone incorrect");
-        softAssert.assertEquals(driver.findElement(inputWebsite).getAttribute("value"), "https://anhtester.com", "Website incorrect");
+        softAssert.assertEquals(WebUI.getElementAttribute(inputCompany, "value"), customer_Name, "Company Name incorrect");
+        softAssert.assertEquals(WebUI.getElementAttribute(inputVat, "value"), "123456", "VAT incorrect");
+        softAssert.assertEquals(WebUI.getElementAttribute(inputPhone,"value"), "99999999", "Phone incorrect");
+        softAssert.assertEquals(WebUI.getElementAttribute(inputWebsite,"value"), "https://anhtester.com", "Website incorrect");
         softAssert.assertAll();
     }
 }
