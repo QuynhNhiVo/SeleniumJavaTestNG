@@ -3,6 +3,7 @@ package org.testng.SeleniumTestNG._11ThucHanhPOM.testcases;
 import org.testng.SeleniumTestNG._11ThucHanhPOM.pages.DashboardPage;
 import org.testng.SeleniumTestNG._11ThucHanhPOM.pages.LoginPage;
 import org.testng.SeleniumTestNG.common.BaseTest;
+import org.testng.SeleniumTestNG.keywords.constants.ConfigData;
 import org.testng.SeleniumTestNG.keywords.keywords.WebUI;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -13,10 +14,9 @@ public class LoginTest extends BaseTest {
     DashboardPage dashboardPage;
 
     @Test
-    @Parameters({"email", "password"})
-    public void loginSuccess(String email, String password){
+    public void loginSuccess(){
         loginPage = new LoginPage(driver);
-        dashboardPage = loginPage.loginCRM(email, password);
+        dashboardPage = loginPage.loginCRM(ConfigData.email, ConfigData.password);
         waitForPageLoaded();
         loginPage.verifyLoginSuccess();
         WebUI.captureScreenImage("testLogin");

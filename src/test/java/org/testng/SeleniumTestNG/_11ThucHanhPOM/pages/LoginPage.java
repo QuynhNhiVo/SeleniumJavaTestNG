@@ -55,7 +55,7 @@ public class LoginPage {
     }
 
     public void verifyLoginFail(){
-        Assert.assertTrue(driver.getCurrentUrl().contains("authentication"), "Fail. Không òn ở Login Page");
+        Assert.assertTrue(driver.getCurrentUrl().contains("authentication"), "Fail. Không còn ở Login Page");
         Assert.assertTrue(driver.findElement(errorMessage).isDisplayed(), "Error message not display");
 //        Assert.assertEquals(driver.findElement(errorMessage).getText(), "Invalid email or password", "Error message incorrect");
         Assert.assertEquals(WebUI.getElementText(errorMessage), "Invalid email or password", "Error message incorrect");
